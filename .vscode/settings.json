@@ -1,0 +1,15 @@
+{
+    "editor.tabSize": 4,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        ".tmp": true
+    },
+    "files.exclude": {
+        ".tmp": true
+    },
+    "search.exclude": {
+        ".tmp": true,
+        "typings": true
+    }  
+}

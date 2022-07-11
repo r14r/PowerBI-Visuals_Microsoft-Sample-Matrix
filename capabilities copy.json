@@ -1,0 +1,192 @@
+{
+  "dataRoles": [
+    {
+      "name": "rows",
+      "displayName": "Rows",
+      "kind": "Grouping"
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "kind": "Grouping"
+    },
+    {
+      "name": "measure",
+      "displayName": "Measure",
+      "kind": "Measure"
+    }
+  ],
+
+  "dataViewMappings": [
+    {
+      "matrix": {
+        "rows": {
+          "for": {
+            "in": "rows"
+          }
+        },
+        "columns": {
+          "for": {
+            "in": "columns"
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "for": {
+                "in": "measure"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "categorical": {
+        "categories": {
+          "for": {
+            "in": "rows"
+          },
+          "dataReductionAlgorithm": {
+            "top": {}
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "bind": {
+                "to": "measure"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "objects": {
+    "dataPoint": {
+      "displayName": "Data colors",
+      "properties": {
+        "defaultColor": {
+          "displayName": "Default color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "showAllDataPoints": {
+          "displayName": "Show all",
+          "type": {
+            "bool": true
+          }
+        },
+        "fill": {
+          "displayName": "Fill",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "fillRule": {
+          "displayName": "Color saturation",
+          "type": {
+            "fill": {}
+          }
+        },
+        "fontSize": {
+          "displayName": "Text Size",
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        }
+      }
+    },
+    "subTotals": {
+      "displayName": "Subtotals",
+      "properties": {
+        "rowSubtotals": {
+          "type": {
+            "bool": true
+          },
+          "displayName": "Row subtotals",
+          "description": "Show subtotals for all row groups",
+          "suppressFormatPainterCopy": true
+        },
+        "perRowLevel": {
+          "displayName": "Per row level",
+          "type": {
+            "bool": true
+          },
+          "suppressFormatPainterCopy": true
+        },
+        "columnSubtotals": {
+          "type": {
+            "bool": true
+          },
+          "displayName": "Column subtotals",
+          "description": "Show subtotals for all column groups",
+          "suppressFormatPainterCopy": true
+        },
+        "perColumnLevel": {
+          "displayName": "Per column level",
+          "type": {
+            "bool": true
+          },
+          "suppressFormatPainterCopy": true
+        },
+        "levelSubtotalEnabled": {
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    }
+  },
+  "subtotals": {
+    "matrix": {
+      "rowSubtotals": {
+        "propertyIdentifier": {
+          "objectName": "subTotals",
+          "propertyName": "rowSubtotals"
+        },
+        "defaultValue": true
+      },
+      "rowSubtotalsPerLevel": {
+        "propertyIdentifier": {
+          "objectName": "subTotals",
+          "propertyName": "perRowLevel"
+        },
+        "defaultValue": false
+      },
+      "columnSubtotals": {
+        "propertyIdentifier": {
+          "objectName": "subTotals",
+          "propertyName": "columnSubtotals"
+        },
+        "defaultValue": true
+      },
+      "columnSubtotalsPerLevel": {
+        "propertyIdentifier": {
+          "objectName": "subTotals",
+          "propertyName": "perColumnLevel"
+        },
+        "defaultValue": false
+      },
+      "levelSubtotalEnabled": {
+        "propertyIdentifier": {
+          "objectName": "subTotals",
+          "propertyName": "levelSubtotalEnabled"
+        },
+        "defaultValue": true
+      }
+    }
+  }
+}
